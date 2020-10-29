@@ -1,0 +1,19 @@
+.formLabel {
+  margin: 20px auto 0 auto;
+  padding: 30px 40px;
+  border-radius: 10px 10px 0 0;
+  width: 600px;
+  background-color: chartreuse;
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.clickableLabel {
+  cursor: pointer;
+}
+
+.selectedLabel {
+  color: red;
+}

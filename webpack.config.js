@@ -2,9 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./client/src/index.js",
   output: {
-    path: path.resolve(__dirname, "..", "build"),
+    path: path.resolve(__dirname, "server", "build"),
     filename: "bundle.js",
   },
   devtool: "inline-source-map",
@@ -13,9 +13,15 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
@@ -25,7 +31,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "public/index.html",
+      template: "client/public/index.html",
     }),
   ],
 };

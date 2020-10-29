@@ -1,6 +1,6 @@
 import React from "react";
 
-const title = "Hello this is loaded by babel";
+const title = "Different title";
 
 export default function App() {
   return <div>{title}</div>;

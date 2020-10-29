@@ -1,12 +1,13 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -19,11 +20,12 @@ module.exports = {
     ],
   },
   devServer: {
-      open: true,
+    open: true,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
-]
+  ],
 };

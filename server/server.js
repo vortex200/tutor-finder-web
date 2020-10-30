@@ -4,6 +4,8 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use("/api", require("./routes/routes.js"));
+
 if (process.env.NODE_ENV === "production") {
   console.log("Started in production");
   app.use(express.static(path.resolve(__dirname, "build")));

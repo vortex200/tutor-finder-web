@@ -1,0 +1,49 @@
+GET http://localhost:5000/api/posts
+
+###
+
+GET http://localhost:5000/api/posts/5f0ac8eeb58fc5082367719e
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.NWYwYWM4YWZiNThmYzUwODIzNjc3MTlk.vzuBYrJn5YRG_NdjvhrAkH-7g4jMMFFzpN7B0hIXFB8
+###
+
+DELETE http://localhost:5000/api/posts/5f093f95e982690b555465db
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.NWYwYWM4YWZiNThmYzUwODIzNjc3MTlk.vzuBYrJn5YRG_NdjvhrAkH-7g4jMMFFzpN7B0hIXFB8
+
+###
+
+DELETE http://localhost:5000/api/posts/5f0ac8eeb58fc5082367719e
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.NWYwYWM4YWZiNThmYzUwODIzNjc3MTlk.vzuBYrJn5YRG_NdjvhrAkH-7g4jMMFFzpN7B0hIXFB8
+
+###
+
+POST http://localhost:5000/api/user/register
+Content-Type: application/json
+
+{
+    "email": "dog@gmail.com",
+    "password": "dog"
+}
+
+###
+
+POST http://localhost:5000/api/user/login
+Content-Type: application/json
+
+{
+    "email": "dog@gmail.com",
+    "password": "dog"
+}
+
+###
+
+GET http://localhost:5000/api/user/auth
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.NWYwYWRhMTYyZjdmZWQwYjQwMzkwNWNl.Rb0qof0YplJ8A62zZikzDWRaDXLPpwftkRD9ELCau24
+
+###
+
+GET http://localhost:5000/api/user/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.NWYwYWM4YWZiNThmYzUwODIzNjc3MTlk.vzuBYrJn5YRG_NdjvhrAkH-7g4jMMFFzpN7B0hIXFB8
+
+###
+
+GET http://localhost:5000/api/user/5f033600b5184f128d3c08a2

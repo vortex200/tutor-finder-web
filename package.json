@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
-    "start:server": "NODE_ENV=production node server/server.js",
-    "start:dev": "webpack serve",
+    "start:frontend": "webpack serve",
+    "start:backend": "NODE_ENV=production node server/server.js",
     "build": "webpack",
     "test": "jest"
   },

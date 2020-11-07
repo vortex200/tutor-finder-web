@@ -7,6 +7,7 @@
     "start": "node server/server.js",
     "start:frontend": "webpack serve",
     "start:backend": "NODE_ENV=production node server/server.js",
+    "lint": "eslint .",
     "build": "webpack",
     "test": "jest"
   },
@@ -29,6 +30,8 @@
     "babel-loader": "^8.1.0",
     "concurrently": "^5.3.0",
     "css-loader": "^5.0.0",
+    "eslint": "^7.12.1",
+    "eslint-plugin-react": "^7.21.5",
     "html-webpack-plugin": "^4.5.0",
     "jest": "^26.6.1",
     "sass": "^1.27.1",

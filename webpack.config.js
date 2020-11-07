@@ -26,7 +26,9 @@ module.exports = {
     ],
   },
   devServer: {
+    compress: true,
     open: true,
+    hot: true,
     historyApiFallback: true,
   },
   plugins: [

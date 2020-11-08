@@ -25,8 +25,16 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".js", ".jsx"],
+    alias: {
+      Utils: path.resolve(__dirname, "client", "src", "utils"),
+    },
+  },
   devServer: {
+    compress: true,
     open: true,
+    hot: true,
     historyApiFallback: true,
   },
   plugins: [

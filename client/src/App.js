@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
 import Home from "./components/Landing";
-import About from "./components/about";
 import User from "./components/User";
+import Listing from "./components/Listings";
 
 export default function App() {
   return (
@@ -18,8 +18,8 @@ export default function App() {
           <Route path="/login">
             <User isLogin={true} />
           </Route>
-          <Route path="/about">
-            <About />
+          <Route path="/listing">
+            <Listing />
           </Route>
           <Route path="/">
             <Home />

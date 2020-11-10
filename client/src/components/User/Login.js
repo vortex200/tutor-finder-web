@@ -3,6 +3,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
 
 import "./Login.scss";
 
@@ -22,6 +23,18 @@ function Login() {
           <Button variant="primary" type="submit">
             Submit
           </Button>
+
+          <Row>
+            <Button variant="primary" className="login-btn">
+              Login with Facebook
+            </Button>
+          </Row>
+
+          <Row>
+            <Button variant="success" className="login-btn">
+              Login with Google
+            </Button>
+          </Row>
         </Form>
       </div>
     </Container>

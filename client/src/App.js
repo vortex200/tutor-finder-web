@@ -18,7 +18,7 @@ export default function App() {
           <Route path="/login">
             <User isLogin={true} />
           </Route>
-          <Route path="/listings">
+          <Route path="/listing">
             <Listing />
           </Route>
           <Route path="/">

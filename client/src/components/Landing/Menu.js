@@ -10,8 +10,8 @@ function Menu() {
   return (
     <Jumbotron>
       <Row>
-        <Col className="choiceOne">Choice 1</Col>
-        <Col>Choice 2</Col>
+        <Col className="choiceOne">Ieškau korepetitoriaus</Col>
+        <Col>Esu korepetitorius</Col>
       </Row>
     </Jumbotron>
   );

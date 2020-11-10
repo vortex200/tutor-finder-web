@@ -3,12 +3,14 @@ import Container from "react-bootstrap/Container";
 import CardDeck from "react-bootstrap/CardDeck";
 import Card from "react-bootstrap/Card";
 
+import image from "../../../assets/img/person.png";
+
 function Listing() {
   return (
     <Container>
       <CardDeck>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img variant="top" src={image} />
           <Card.Body>
             <Card.Title>Card title</Card.Title>
             <Card.Text>
@@ -22,7 +24,7 @@ function Listing() {
           </Card.Footer>
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img variant="top" src={image} />
           <Card.Body>
             <Card.Title>Card title</Card.Title>
             <Card.Text>
@@ -35,7 +37,7 @@ function Listing() {
           </Card.Footer>
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img variant="top" src={image} />
           <Card.Body>
             <Card.Title>Card title</Card.Title>
             <Card.Text>

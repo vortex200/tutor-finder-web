@@ -8,7 +8,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 import CategoriesArray from "Utils/CategoriesArray.example.js";
 
 function Category(props) {
-  return <ListGroup.Item>{props.name}</ListGroup.Item>;
+  return (
+    <ListGroup.Item>
+      <a href="/listings">{props.name}</a>
+    </ListGroup.Item>
+  );
 }
 
 function CategoryList(names) {

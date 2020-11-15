@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "NODE_ENV=production node server/server.js",
     "start:frontend": "webpack serve",
-    "start:backend": "NODE_ENV=production node server/server.js",
+    "start:backend": "node server/server.js",
     "lint": "eslint .",
     "build": "webpack",
     "test": "jest"
@@ -16,7 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.5.3",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "pg": "^8.5.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",

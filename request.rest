@@ -1,9 +1,39 @@
 ###
 
-GET http://localhost:5000/api/posts
+POST http://localhost:5000/api/listings/create
+content-type: application/json
+
+{
+    "name": "Petras Petrauskas",
+    "title": "Informatikos koorepetitorius Vilniuje",
+    "description": "1-12 klases mokiniams",
+    "city": "Vilnius",
+    "category": "Informatika"
+}
 
 ###
 
-GET https://tutor-finder.herokuapp.com/api/posts
+GET http://localhost:5000/api/listings/
 
 ###
+
+DELETE http://localhost:5000/api/listings/delete
+content-type: application/json
+
+{
+    "id": "1"
+}
+
+###
+
+PUT http://localhost:5000/api/listings/update
+content-type: application/json
+
+{
+    "id": "2",
+    "name": "Petras Petrauskas",
+    "title": "Informatikos koorepetitorius Vilniuje",
+    "description": "1-12 klases mokiniams",
+    "city": "Kaunas",
+    "category": "Informatika"
+}

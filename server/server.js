@@ -10,6 +10,7 @@ app.use(express.json());
 
 // app.use("/api", require("./routes/routes.js"));
 app.use("/api/listings", require("./routes/listings.routes.js"));
+app.use("/api/auth", require("./routes/jwtAuth.js"));
 
 if (process.env.NODE_ENV === "production") {
   console.log("Started in production");

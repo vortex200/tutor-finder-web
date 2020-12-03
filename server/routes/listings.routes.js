@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const authorization = require("../middleware/authorization");
 
 const pool = require("../database/db");
 
-router.get("/", async (req, res) => {
+router.get("/", authorization, async (req, res) => {
   // return all listings
 
   try {
@@ -14,7 +15,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/create", async (req, res) => {
+router.post("/create", authorization, async (req, res) => {
   // create new listing
 
   try {
@@ -32,7 +33,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.put("/update", async (req, res) => {
+router.put("/update", authorization, async (req, res) => {
   // update existing listing
 
   try {
@@ -50,7 +51,7 @@ router.put("/update", async (req, res) => {
   }
 });
 
-router.delete("/delete", async (req, res) => {
+router.delete("/delete", authorization, async (req, res) => {
   // delete existing listing
 
   try {

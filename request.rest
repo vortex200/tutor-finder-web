@@ -1,6 +1,9 @@
+@host=http://localhost:5000
+@token=123
+
 ###
 
-POST http://localhost:5000/api/listings/create
+POST {{host}}/api/listings/create
 content-type: application/json
 
 {
@@ -13,11 +16,11 @@ content-type: application/json
 
 ###
 
-GET http://localhost:5000/api/listings/
+GET {{host}}/api/listings/
 
 ###
 
-DELETE http://localhost:5000/api/listings/delete
+DELETE {{host}}/api/listings/delete
 content-type: application/json
 
 {
@@ -26,7 +29,7 @@ content-type: application/json
 
 ###
 
-PUT http://localhost:5000/api/listings/update
+PUT {{host}}/api/listings/update
 content-type: application/json
 
 {
@@ -37,3 +40,79 @@ content-type: application/json
     "city": "Kaunas",
     "category": "Informatika"
 }
+
+###
+
+POST {{host}}/api/user/register
+content-type: application/json
+
+{
+    "name": "Petras Petrauskas",
+    "email": "email@gmail.com",
+    "password": "slaptazodis"
+}
+
+###
+
+POST {{host}}/api/user/register
+content-type: application/json
+
+{
+    "name": "Petras Petrauskas",
+    "email": "doomar999@gmail.com",
+    "password": "slaptazodis"
+}
+
+###
+
+POST {{host}}/api/user/activation
+content-type: application/json
+
+{
+    "activation_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0cmFzIFBldHJhdXNrYXMiLCJlbWFpbCI6ImRvb21hcjk5OUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMiRZZ2J0RVQ1ak9weEFjQ1B3MzBENDhlb1M2ZlFkVW4yZVFET2syWVlSOGtiZlp4dEo3WEc1cSIsImlhdCI6MTYwNzUyODYzOSwiZXhwIjoxNjA3NTI4OTM5fQ.TEe-oy85h5Wg2CpQkHQ1P2wsDeH_FMLn_MKs-QZMUmA"
+}
+
+###
+
+POST {{host}}/api/user/login
+content-type: application/json
+
+{
+    "email": "doomar999@gmail.com",
+    "password": "zodis123"
+}
+
+###
+
+POST {{host}}/api/user/refresh_token
+content-type: application/json
+
+
+###
+
+POST {{host}}/api/user/forgot
+content-type: application/json
+
+{
+    "email": "doomar999@gmail.com"
+}
+
+###
+
+POST {{host}}/api/user/reset
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "password": "zodis123"
+}
+
+###
+
+GET {{host}}/api/user/infor
+content-type: application/json
+Authorization: {{token}}
+
+###
+
+GET {{host}}/api/user/logout

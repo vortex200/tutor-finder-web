@@ -11,7 +11,6 @@ function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link href="/register">Registracija</Nav.Link>
             <Nav.Link href="/login">Prisijungti</Nav.Link>
           </Nav>
         </Navbar.Collapse>

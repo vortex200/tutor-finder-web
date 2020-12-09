@@ -8,12 +8,17 @@ CREATE TABLE listings (
 );
 
 CREATE TABLE users (
-    id NOT NULL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
+    id SERIAL NOT NULL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    isTutor BOOLEAN DEFAULT false,
+    avatar VARCHAR(50)
 );
 
 -- test data;
-INSERT INTO listings(id, name, title, description, city)
-VALUES (001, 'Petras K.', 'Matematikos mokytojas', 'Alytus', 'Matematika'); 
+INSERT INTO listings(name, title, description, city, category)
+VALUES ('Petras K.', 'Matematikos mokytojas', 'Geras korepetitorius','Alytus', 'Matematika'); 
+
+INSERT INTO users(name, email, password)
+VALUES ('Petras Petraitis', 'email@gmail.com', 'slaptazodis'); 

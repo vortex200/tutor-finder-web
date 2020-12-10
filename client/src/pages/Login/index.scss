@@ -1,3 +1,8 @@
+#pageTitle {
+  margin: 20px 0;
+  text-align: center;
+}
+
 .formBox {
   margin: 0 auto 0 auto;
   padding: 30px 40px;
@@ -8,4 +13,22 @@
 
 #login-btn {
   width: 200px;
+}
+
+.divider-text {
+  margin: 10px 0;
+}
+
+.google-login-btn {
+  height: 50px;
+  width: 250px;
+}
+
+.social {
+  margin-bottom: 10px;
+}
+
+.kep-login-facebook {
+  height: 50px;
+  width: 250px;
 }

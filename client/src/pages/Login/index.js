@@ -93,7 +93,7 @@ function Login() {
 
   return (
     <div className="login_page">
-      <h2>Login</h2>
+      <h2 id="pageTitle">Login</h2>
       {err && <div>Error: {err}</div>}
       {success && <div>Success: {success}</div>}
 
@@ -130,7 +130,8 @@ function Login() {
               <Link to="/forgot_password">Forgot your password?</Link>
             </div>
           </Form>
-          <div className="hr">Or Login With</div>
+
+          <div className="divider-text">Or Login With</div>
 
           <div className="social">
             <GoogleLogin
@@ -138,6 +139,7 @@ function Login() {
               buttonText="Login with google"
               onSuccess={responseGoogle}
               cookiePolicy={"single_host_origin"}
+              className="google-login-btn"
             />
           </div>
           <div>

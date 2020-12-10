@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -32,6 +33,7 @@ export default function Register() {
 
   return (
     <Container>
+      <h2 id="pageTitle">Register</h2>
       <div className="formBox">
         <Form.Group controlId="formEmail">
           <Form.Control
@@ -72,6 +74,10 @@ export default function Register() {
         <Button variant="primary" type="submit" onClick={(e) => submit(e)}>
           Submit
         </Button>
+
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
       </div>
     </Container>
   );

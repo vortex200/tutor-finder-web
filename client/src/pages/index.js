@@ -1,6 +1,6 @@
 import React from "react";
-
 import Container from "react-bootstrap/Container";
+import Jumbotron from "react-bootstrap/Jumbotron";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -21,19 +21,27 @@ function CategoryList(names) {
   });
 }
 
-function Categories() {
+function Landing() {
   const names = CategoriesArray;
 
   return (
     <Container>
-      <h1>Kategorijos:</h1>
-      <Row>
-        <Col className="choiceOne">
-          <ListGroup>{CategoryList(names)}</ListGroup>
-        </Col>
-      </Row>
+      <Jumbotron>
+        <Row>
+          <Col className="choiceOne">Ieškau korepetitoriaus</Col>
+          <Col>Esu korepetitorius</Col>
+        </Row>
+      </Jumbotron>
+      <Container>
+        <h1>Kategorijos:</h1>
+        <Row>
+          <Col className="choiceOne">
+            <ListGroup>{CategoryList(names)}</ListGroup>
+          </Col>
+        </Row>
+      </Container>
     </Container>
   );
 }
 
-export default Categories;
+export default Landing;

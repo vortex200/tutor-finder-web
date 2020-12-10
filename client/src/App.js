@@ -10,11 +10,13 @@ import axios from "axios";
 import Config from "Utils/Config";
 
 import NavBar from "./components/NavBar";
-import Home from "./components/Landing";
 import Listing from "./components/Listings";
+
+import Landing from "./pages";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Activate from "./pages/Activate";
+import Profile from "./pages/Profile";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -53,11 +55,12 @@ export default function App() {
       <div>
         <NavBar />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/activate" component={Activate} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/listings" component={Listing} />
+          <Route exact path="/profile" component={Profile} />
         </Switch>
       </div>
     </Router>

@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { showErrMsg, showSuccessMsg } from "Components/Notification";
 import Config from "Utils/Config";
 
 import "./index.scss";
@@ -13,6 +14,8 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [fistName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
   function submit(e) {
     e.preventDefault();
@@ -24,10 +27,10 @@ export default function Register() {
         name: fistName + " " + lastName,
       })
       .then(function (response) {
-        console.log(response);
+        setSuccess(response.data.msg);
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function () {
+        setError("Error");
       });
   }
 
@@ -78,6 +81,9 @@ export default function Register() {
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>
+
+        {success && showSuccessMsg(success)}
+        {error && showErrMsg(error)}
       </div>
     </Container>
   );

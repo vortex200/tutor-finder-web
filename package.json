@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "keywords": [],
-  "author": "",
+  "author": "Julijus Rancevas",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.0",

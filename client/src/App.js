@@ -26,7 +26,7 @@ export default function App() {
     if (firstLogin) {
       const getToken = async () => {
         const res = await axios.post(
-          Config.BACKEND_URL + "/user/refresh_token",
+          Config.BACKEND_URL + "/api/user/refresh_token",
           null
         );
         dispatch({ type: "GET_TOKEN", payload: res.data.access_token });

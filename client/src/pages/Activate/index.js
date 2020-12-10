@@ -16,7 +16,7 @@ function Activate() {
       const activationEmail = async () => {
         try {
           const res = await axios.post(
-            Config.BACKEND_URL + "/user/activation",
+            Config.BACKEND_URL + "/api/user/activation",
             {
               activation_token,
             }

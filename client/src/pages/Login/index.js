@@ -33,11 +33,10 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(Config.BACKEND_URL + "/user/login", {
+      const res = await axios.post(Config.BACKEND_URL + "/api/user/login", {
         email,
         password,
       });
-      console.log(res);
       setUser({ ...user, err: "", success: res.data.msg });
 
       localStorage.setItem("firstLogin", true);
@@ -53,9 +52,12 @@ function Login() {
   const responseGoogle = async (response) => {
     console.log(response);
     try {
-      const res = await axios.post(Config.BACKEND_URL + "/user/google_login", {
-        tokenId: response.tokenId,
-      });
+      const res = await axios.post(
+        Config.BACKEND_URL + "/api/user/google_login",
+        {
+          tokenId: response.tokenId,
+        }
+      );
 
       setUser({ ...user, error: "", success: res.data.msg });
       localStorage.setItem("firstLogin", true);
@@ -73,7 +75,7 @@ function Login() {
     try {
       const { accessToken, userID } = response;
       const res = await axios.post(
-        Config.BACKEND_URL + "/user/facebook_login",
+        Config.BACKEND_URL + "/api/user/facebook_login",
         {
           accessToken,
           userID,

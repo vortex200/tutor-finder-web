@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom"; /* eslint-disable-line */
 import axios from "axios";
+import Config from "Utils/Config";
 
 function Activate() {
   const activation_token = new URLSearchParams(location.search).get("token");
@@ -15,7 +16,7 @@ function Activate() {
       const activationEmail = async () => {
         try {
           const res = await axios.post(
-            process.env.BACKEND_URL + "/user/activation",
+            Config.BACKEND_URL + "/user/activation",
             {
               activation_token,
             }

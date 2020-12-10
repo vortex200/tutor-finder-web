@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import Config from "Utils/Config";
 
 import "./index.scss";
 
@@ -16,7 +17,7 @@ export default function Register() {
     e.preventDefault();
     console.log(email, password, fistName, lastName);
     axios
-      .post(process.env.BACKEND_URL + "/api/user/register", {
+      .post(Config.BACKEND_URL + "/api/user/register", {
         email,
         password,
         name: fistName + " " + lastName,

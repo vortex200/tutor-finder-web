@@ -7,6 +7,7 @@ import {
   dispatchGetUser,
 } from "./redux/actions/authAction";
 import axios from "axios";
+import Config from "Utils/Config";
 
 import NavBar from "./components/NavBar";
 import Home from "./components/Landing";
@@ -25,7 +26,7 @@ export default function App() {
     if (firstLogin) {
       const getToken = async () => {
         const res = await axios.post(
-          process.env.BACKEND_URL + "/user/refresh_token",
+          Config.BACKEND_URL + "/user/refresh_token",
           null
         );
         dispatch({ type: "GET_TOKEN", payload: res.data.access_token });

@@ -1,5 +1,6 @@
 import ACTIONS from "./index";
 import axios from "axios";
+import Config from "Utils/Config";
 
 export const dispatchLogin = () => {
   return {
@@ -8,7 +9,7 @@ export const dispatchLogin = () => {
 };
 
 export const fetchUser = async (token) => {
-  const res = await axios.get(process.env.BACKEND_URL + "/user/infor", {
+  const res = await axios.get(Config.BACKEND_URL + "/user/infor", {
     headers: { Authorization: token },
   });
   return res;

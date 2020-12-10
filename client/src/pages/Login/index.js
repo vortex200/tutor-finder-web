@@ -8,6 +8,7 @@ import FacebookLogin from "react-facebook-login";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Config from "Utils/Config";
 import "./index.scss";
 
 const initialState = {
@@ -32,7 +33,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(process.env.BACKEND_URL + "/user/login", {
+      const res = await axios.post(Config.BACKEND_URL + "/user/login", {
         email,
         password,
       });
@@ -52,12 +53,9 @@ function Login() {
   const responseGoogle = async (response) => {
     console.log(response);
     try {
-      const res = await axios.post(
-        process.env.BACKEND_URL + "/user/google_login",
-        {
-          tokenId: response.tokenId,
-        }
-      );
+      const res = await axios.post(Config.BACKEND_URL + "/user/google_login", {
+        tokenId: response.tokenId,
+      });
 
       setUser({ ...user, error: "", success: res.data.msg });
       localStorage.setItem("firstLogin", true);
@@ -75,7 +73,7 @@ function Login() {
     try {
       const { accessToken, userID } = response;
       const res = await axios.post(
-        process.env.BACKEND_URL + "/user/facebook_login",
+        Config.BACKEND_URL + "/user/facebook_login",
         {
           accessToken,
           userID,
@@ -136,7 +134,7 @@ function Login() {
 
           <div className="social">
             <GoogleLogin
-              clientId={process.env.GOOGLE_CLIENT_ID}
+              clientId={Config.GOOGLE_CLIENT_ID}
               buttonText="Login with google"
               onSuccess={responseGoogle}
               cookiePolicy={"single_host_origin"}
@@ -144,7 +142,7 @@ function Login() {
           </div>
           <div>
             <FacebookLogin
-              appId={process.env.FACEBOOK_APP_ID}
+              appId={Config.FACEBOOK_APP_ID}
               autoLoad={false}
               fields="name,email,picture"
               callback={responseFacebook}

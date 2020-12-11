@@ -44,7 +44,7 @@ const userCtrl = {
 
       const activation_token = createActivationToken(newUser);
 
-      const url = `${CLIENT_URL}/activate?token=${activation_token}`;
+      const url = `${process.env.CLIENT_URL}/activate?token=${activation_token}`;
       sendMail(email, url, "Verify your email address");
 
       res.json({

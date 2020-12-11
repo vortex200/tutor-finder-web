@@ -10,6 +10,7 @@ import axios from "axios";
 import Config from "Utils/Config";
 
 import NavBar from "./components/NavBar";
+import NotFound from "./components/NotFound";
 import Listing from "./components/Listings";
 
 import Landing from "./pages";
@@ -61,6 +62,7 @@ export default function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/listings" component={Listing} />
           <Route exact path="/profile" component={Profile} />
+          <Route component={NotFound} />
         </Switch>
       </div>
     </Router>

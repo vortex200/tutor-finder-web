@@ -1,5 +1,5 @@
 @host=http://localhost:5000
-@token=123
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjA3Njg4NzQ2LCJleHAiOjE2MDc2ODk2NDZ9.uZ9TmvgVVbTYS6uzNyKNejgL4Cg8g0CnFCakgErAdhE
 
 ###
 
@@ -47,6 +47,17 @@ POST {{host}}/api/user/register
 content-type: application/json
 
 {
+    "name": "Vardas Pavarde",
+    "email": "email@eshop.gg",
+    "password": "slaptazodis"
+}
+
+###
+
+POST {{host}}/api/user/register
+content-type: application/json
+
+{
     "name": "Petras Petrauskas",
     "email": "email@gmail.com",
     "password": "slaptazodis"
@@ -69,7 +80,7 @@ POST {{host}}/api/user/activation
 content-type: application/json
 
 {
-    "activation_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0cmFzIFBldHJhdXNrYXMiLCJlbWFpbCI6ImRvb21hcjk5OUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMiRZZ2J0RVQ1ak9weEFjQ1B3MzBENDhlb1M2ZlFkVW4yZVFET2syWVlSOGtiZlp4dEo3WEc1cSIsImlhdCI6MTYwNzUyODYzOSwiZXhwIjoxNjA3NTI4OTM5fQ.TEe-oy85h5Wg2CpQkHQ1P2wsDeH_FMLn_MKs-QZMUmA"
+    "activation_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0cmFzIFBldHJhdXNrYXMiLCJlbWFpbCI6ImRvb21hcjk5OUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMiRVVEF0eTN5Q0R3ckIuZDZoZllJYkZ1RTVsZ0NrSjVBV3prRVUuclAxWWR6akkwdC9lNjh5bSIsImlhdCI6MTYwNzY4ODMxOSwiZXhwIjoxNjA3Njg4NjE5fQ.Nb_V42txB_WosN6xTR6eSUgflCe9TqnjWmFmAmopVZE"
 }
 
 ###
@@ -79,7 +90,7 @@ content-type: application/json
 
 {
     "email": "doomar999@gmail.com",
-    "password": "zodis123"
+    "password": "slaptazodis"
 }
 
 ###

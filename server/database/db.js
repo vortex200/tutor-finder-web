@@ -1,19 +1,60 @@
-const Pool = require("pg").Pool;
+const pool = require("./pool");
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
+const db = {
+  getUserByEmail: async (email) => {
+    try {
+      const user = await pool.query("SELECT * from users WHERE email=$1", [
+        email,
+      ]);
+
+      return user.rows[0];
+    } catch (err) {
+      return err;
+    }
   },
-});
+  createUser: async (name, email, password) => {
+    try {
+      await pool.query(
+        "INSERT INTO users (name, email, password) VALUES($1, $2, $3)",
+        [name, email, password]
+      );
+      return;
+    } catch (err) {
+      return err;
+    }
+  },
+  setPasswordByUserId: async (id, password) => {
+    try {
+      await pool.query("UPDATE users SET password=$2 WHERE id=$1", [
+        id,
+        password,
+      ]);
+      return;
+    } catch (err) {
+      return err;
+    }
+  },
+  getUserById: async (id) => {
+    try {
+      const user = await pool.query("SELECT * from users WHERE id=$1", [id]);
 
-pool.on("error", (err) => {
-  console.error("Unexpected error on idle client", err);
-  process.exit(-1);
-});
+      return user.rows[0];
+    } catch (err) {
+      return err;
+    }
+  },
+  updateUserById: async (name, avatar) => {
+    try {
+      await pool.query("UPDATE users SET name=$2, avatar=3$ WHERE id=$1", [
+        name,
+        avatar,
+      ]);
 
-pool.on("connect", () => {
-  console.log("Successfully connected to postgres.");
-});
+      return;
+    } catch (err) {
+      return err;
+    }
+  },
+};
 
-module.exports = pool;
+module.exports = db;

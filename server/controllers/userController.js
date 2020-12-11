@@ -1,11 +1,11 @@
-const pool = require("../database/db");
+const db = require("../database/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sendMail = require("./sendMail");
 
 // const { google } = require("googleapis");
 // const { OAuth2 } = google.auth;
-// const fetch = require("node-fetch");
+// // const fetch = require("node-fetch");
 
 // const client = new OAuth2(process.env.MAILING_SERVICE_CLIENT_ID);
 
@@ -22,11 +22,9 @@ const userCtrl = {
       if (!validateEmail(email))
         return res.status(400).json({ msg: "Invalid emails." });
 
-      const user = await pool.query("SELECT * from users WHERE email=$1", [
-        email,
-      ]);
+      const user = await db.getUserByEmail(email);
 
-      if (user.rows[0])
+      if (user)
         return res.status(400).json({ msg: "This email already exists." });
 
       if (password.length < 6)
@@ -64,16 +62,12 @@ const userCtrl = {
 
       const { name, email, password } = user;
 
-      const check = await pool.query("SELECT * from users WHERE email=$1", [
-        email,
-      ]);
-      if (check.rows[0])
+      const check = await db.getUserByEmail(email);
+
+      if (check)
         return res.status(400).json({ msg: "This email already exists." });
 
-      await pool.query(
-        "INSERT INTO users (name, email, password) VALUES($1, $2, $3)",
-        [name, email, password]
-      );
+      await db.createUser(name, email, password);
 
       res.json({ msg: "Account has been activated!" });
     } catch (err) {
@@ -83,11 +77,8 @@ const userCtrl = {
   login: async (req, res) => {
     try {
       const { email, password } = req.body;
-      const userObject = await pool.query(
-        "SELECT * from users WHERE email=$1",
-        [email]
-      );
-      const user = userObject.rows[0];
+
+      const user = await db.getUserByEmail(email);
 
       if (!user)
         return res.status(400).json({ msg: "This email does not exist." });
@@ -128,11 +119,9 @@ const userCtrl = {
   forgotPassword: async (req, res) => {
     try {
       const { email } = req.body;
-      const userObject = await pool.query(
-        "SELECT * from users WHERE email=$1",
-        [email]
-      );
-      const user = userObject.rows[0];
+
+      const user = await db.getUserByEmail(email);
+
       if (!user)
         return res.status(400).json({ msg: "This email does not exist." });
 
@@ -150,10 +139,7 @@ const userCtrl = {
       const { password } = req.body;
       const passwordHash = await bcrypt.hash(password, 12);
 
-      await pool.query("UPDATE users SET password=$2 WHERE id=$1", [
-        req.user.id,
-        passwordHash,
-      ]);
+      await db.setPasswordByUserId(req.user.id, passwordHash);
 
       res.json({ msg: "Password successfully changed!" });
     } catch (err) {
@@ -162,11 +148,7 @@ const userCtrl = {
   },
   getUserInfor: async (req, res) => {
     try {
-      const userObject = await pool.query(
-        "SELECT json_build_object('id', id, 'name', name, 'email', email, 'isTutor', istutor, 'avatar', avatar) from users WHERE id=$1",
-        [req.user.id]
-      );
-      const user = userObject.rows[0].json_build_object;
+      const user = await db.getUserById(req.user.id);
       res.json(user);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -192,10 +174,7 @@ const userCtrl = {
   updateUser: async (req, res) => {
     try {
       const { name, avatar } = req.body;
-      await pool.query("UPDATE users SET name=$2, avatar=3$ WHERE id=$1", [
-        name,
-        avatar,
-      ]);
+      await db.updateUserById(name, avatar);
 
       res.json({ msg: "Update Success!" });
     } catch (err) {

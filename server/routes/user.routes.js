@@ -28,8 +28,8 @@ router.patch("/update", auth, userCtrl.updateUser);
 // router.delete("/delete/:id", auth, authAdmin, userCtrl.deleteUser);
 
 // // Social Login
-// router.post("/google_login", userCtrl.googleLogin);
+router.post("/google_login", userCtrl.googleLogin);
 
-// router.post("/facebook_login", userCtrl.facebookLogin);
+router.post("/facebook_login", userCtrl.facebookLogin);
 
 module.exports = router;

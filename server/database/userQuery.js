@@ -1,6 +1,6 @@
 const pool = require("./pool");
 
-const db = {
+const userQuery = {
   getUserByEmail: async (email) => {
     try {
       const user = await pool.query("SELECT * from users WHERE email=$1", [
@@ -57,4 +57,4 @@ const db = {
   },
 };
 
-module.exports = db;
+module.exports = userQuery;

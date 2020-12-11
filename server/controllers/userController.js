@@ -1,4 +1,4 @@
-const db = require("../database/db");
+const userQuery = require("../database/userQuery");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sendMail = require("./sendMail");
@@ -22,7 +22,7 @@ const userCtrl = {
       if (!validateEmail(email))
         return res.status(400).json({ msg: "Invalid emails." });
 
-      const user = await db.getUserByEmail(email);
+      const user = await userQuery.getUserByEmail(email);
 
       if (user)
         return res.status(400).json({ msg: "This email already exists." });
@@ -62,12 +62,12 @@ const userCtrl = {
 
       const { name, email, password } = user;
 
-      const check = await db.getUserByEmail(email);
+      const check = await userQuery.getUserByEmail(email);
 
       if (check)
         return res.status(400).json({ msg: "This email already exists." });
 
-      await db.createUser(name, email, password);
+      await userQuery.createUser(name, email, password);
 
       res.json({ msg: "Account has been activated!" });
     } catch (err) {
@@ -78,7 +78,7 @@ const userCtrl = {
     try {
       const { email, password } = req.body;
 
-      const user = await db.getUserByEmail(email);
+      const user = await userQuery.getUserByEmail(email);
 
       if (!user)
         return res.status(400).json({ msg: "This email does not exist." });
@@ -120,7 +120,7 @@ const userCtrl = {
     try {
       const { email } = req.body;
 
-      const user = await db.getUserByEmail(email);
+      const user = await userQuery.getUserByEmail(email);
 
       if (!user)
         return res.status(400).json({ msg: "This email does not exist." });
@@ -139,7 +139,7 @@ const userCtrl = {
       const { password } = req.body;
       const passwordHash = await bcrypt.hash(password, 12);
 
-      await db.setPasswordByUserId(req.user.id, passwordHash);
+      await userQuery.setPasswordByUserId(req.user.id, passwordHash);
 
       res.json({ msg: "Password successfully changed!" });
     } catch (err) {
@@ -148,7 +148,7 @@ const userCtrl = {
   },
   getUserInfor: async (req, res) => {
     try {
-      const user = await db.getUserById(req.user.id);
+      const user = await userQuery.getUserById(req.user.id);
       res.json(user);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -174,7 +174,7 @@ const userCtrl = {
   updateUser: async (req, res) => {
     try {
       const { name, avatar } = req.body;
-      await db.updateUserById(name, avatar);
+      await userQuery.updateUserById(name, avatar);
 
       res.json({ msg: "Update Success!" });
     } catch (err) {

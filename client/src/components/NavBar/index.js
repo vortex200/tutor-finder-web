@@ -15,6 +15,7 @@ function NavBar() {
 
   const handleLogout = async () => {
     try {
+      // Doesn't work from first try
       await axios.get("/user/logout");
       localStorage.removeItem("firstLogin");
       window.location.href = "/";

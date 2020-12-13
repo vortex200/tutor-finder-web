@@ -14,11 +14,11 @@ const userQuery = {
   },
   createUser: async (name, email, password) => {
     try {
-      await pool.query(
-        "INSERT INTO users (name, email, password) VALUES($1, $2, $3)",
+      const newUser = await pool.query(
+        "INSERT INTO users (name, email, password) VALUES($1, $2, $3) RETURNING *",
         [name, email, password]
       );
-      return;
+      return newUser.rows[0];
     } catch (err) {
       return err;
     }

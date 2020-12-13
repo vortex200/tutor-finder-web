@@ -211,10 +211,7 @@ const userCtrl = {
         res.json({ msg: "Login success!" });
       } else {
         // avatar: picture,
-        await userQuery.createUser(name, email, passwordHash);
-
-        // return in previous query
-        const newUser = await userQuery.getUserByEmail(email);
+        const newUser = await userQuery.createUser(name, email, passwordHash);
 
         const refresh_token = createRefreshToken({ id: newUser.id });
         res.cookie("refreshtoken", refresh_token, {
@@ -265,10 +262,7 @@ const userCtrl = {
         res.json({ msg: "Login success!" });
       } else {
         // avatar: picture,
-        await userQuery.createUser(name, email, passwordHash);
-
-        // return in previous query
-        const newUser = await userQuery.getUserByEmail(email);
+        const newUser = await userQuery.createUser(name, email, passwordHash);
 
         const refresh_token = createRefreshToken({ id: newUser.id });
         res.cookie("refreshtoken", refresh_token, {

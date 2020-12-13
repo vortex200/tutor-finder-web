@@ -1,6 +1,6 @@
 CREATE TABLE listings (
     id SERIAL NOT NULL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
+    tutor_id VARCHAR(50) NOT NULL,
     title VARCHAR(150) NOT NULL,
     description VARCHAR(200) NOT NULL,
     city VARCHAR(20) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE users (
     name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL,
-    isTutor BOOLEAN DEFAULT false,
+    isTutor BOOLEAN DEFAULT false, --Probably not needed
     avatar VARCHAR(50)
 );
 

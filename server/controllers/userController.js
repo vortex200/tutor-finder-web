@@ -154,15 +154,6 @@ const userCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  //   getUsersAllInfor: async (req, res) => {
-  //     try {
-  //       const users = await Users.find().select("-password");
-
-  //       res.json(users);
-  //     } catch (err) {
-  //       return res.status(500).json({ msg: err.message });
-  //     }
-  //   },
   logout: async (req, res) => {
     try {
       res.clearCookie("refreshtoken", { path: "/api/user/refresh_token" });
@@ -174,6 +165,7 @@ const userCtrl = {
   updateUser: async (req, res) => {
     try {
       const { name, avatar } = req.body;
+      // Mistake
       await userQuery.updateUserById(name, avatar);
 
       res.json({ msg: "Update Success!" });
@@ -181,36 +173,6 @@ const userCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-
-  //   Set user isTutor to true and create separate tutor object with additional information
-
-  //   updateUsersRole: async (req, res) => {
-  //     try {
-  //       const { role } = req.body;
-
-  //       await Users.findOneAndUpdate(
-  //         { _id: req.params.id },
-  //         {
-  //           role,
-  //         }
-  //       );
-
-  //       res.json({ msg: "Update Success!" });
-  //     } catch (err) {
-  //       return res.status(500).json({ msg: err.message });
-  //     }
-  //   },
-
-  // Admin can delete user
-
-  // deleteUser: async (req, res) => {
-  //   try {
-  //     await pool.query("DELETE users WHERE id=$1", [req.params.id]);
-  //     res.json({ msg: "Deleted Success!" });
-  //   } catch (err) {
-  //     return res.status(500).json({ msg: err.message });
-  //   }
-  // },
 
   googleLogin: async (req, res) => {
     try {

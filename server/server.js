@@ -14,6 +14,7 @@ app.use(cookieParser());
 
 // app.use("/api/listings", require("./routes/listings.routes.js"));
 app.use("/api/user", require("./routes/user.routes.js"));
+app.use("/api/tutor", require("./routes/tutor.routes.js"));
 
 if (process.env.NODE_ENV === "production") {
   console.log("Started in production");

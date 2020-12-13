@@ -1,5 +1,5 @@
 @host=http://localhost:5000
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjA3Njg4NzQ2LCJleHAiOjE2MDc2ODk2NDZ9.uZ9TmvgVVbTYS6uzNyKNejgL4Cg8g0CnFCakgErAdhE
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImlhdCI6MTYwNzg0Njg0MywiZXhwIjoxNjA3ODQ3NzQzfQ.4Sj1odtp60dVWFJ_jFNrU3VueDmA7K3Ny8IXWZ7tmqA
 
 ###
 
@@ -80,7 +80,7 @@ POST {{host}}/api/user/activation
 content-type: application/json
 
 {
-    "activation_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0cmFzIFBldHJhdXNrYXMiLCJlbWFpbCI6ImRvb21hcjk5OUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMiRVVEF0eTN5Q0R3ckIuZDZoZllJYkZ1RTVsZ0NrSjVBV3prRVUuclAxWWR6akkwdC9lNjh5bSIsImlhdCI6MTYwNzY4ODMxOSwiZXhwIjoxNjA3Njg4NjE5fQ.Nb_V42txB_WosN6xTR6eSUgflCe9TqnjWmFmAmopVZE"
+    "activation_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0cmFzIFBldHJhdXNrYXMiLCJlbWFpbCI6ImRvb21hcjk5OUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMiRaQlJlTzgyZUFMeXpnZUJjZTFJVXdPTjZBaUZYNExqNkNRWVhTc1VISUVSVGY1dkFPSWEvMiIsImlhdCI6MTYwNzg0NjI5NywiZXhwIjoxNjA3ODQ2NTk3fQ.Om7A3fa4ctOLciVGlw9J2wRpTm6bStxpSwI_bLfp5Gc"
 }
 
 ###
@@ -127,3 +127,21 @@ Authorization: {{token}}
 ###
 
 GET {{host}}/api/user/logout
+
+###
+
+POST {{host}}/api/tutor/register
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "email": "tutor@tutor.com",
+    "phone": "869076239", 
+    "description": "Puikus koorepetitorius"
+}
+
+###
+
+GET {{host}}/api/tutor/info 
+content-type: application/json
+Authorization: {{token}}

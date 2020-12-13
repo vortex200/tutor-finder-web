@@ -12,8 +12,7 @@ CREATE TABLE users (
     name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL,
-    isTutor BOOLEAN DEFAULT false, --Probably not needed
-    avatar VARCHAR(50)
+    avatar VARCHAR(100) DEFAULT 'https://res.cloudinary.com/de3fvokkj/image/upload/v1607862347/avatar_lkbabg.jpg'
 );
 
 CREATE TABLE tutors (

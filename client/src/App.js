@@ -18,6 +18,9 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Activate from "./pages/Activate";
 import Profile from "./pages/Profile";
+// import BecomeTutor from "./pages/BecomeTutor";
+import Forgot_Password from "./pages/Forgot_Password";
+import Reset_Password from "./pages/Reset_Password";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -62,6 +65,9 @@ export default function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/listings" component={Listing} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/forgot_password" component={Forgot_Password} />
+          <Route exact path="/reset_password" component={Reset_Password} />
+          {/* <Route exact path="/becometutor" component={BecomeTutor} /> */}
           <Route component={NotFound} />
         </Switch>
       </div>

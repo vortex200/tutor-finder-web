@@ -1,18 +1,24 @@
 @host=http://localhost:5000
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0cmFzIFBldHJhdXNrYXMiLCJlbWFpbCI6ImRvb21hcjk5OUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMiR6QmNKTlpES3JPai90SzlCMDNYQ2ZPOXhUOW5FU21pNVhGenVrMWhuNk54WUpWMGdYMEtZLiIsImlhdCI6MTYwNzg2MjU2MSwiZXhwIjoxNjA3ODYyODYxfQ.7AOYr9TrS4jXKGooK_jSy8bN2WrKiuSM1wByB2mYts8
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA4MzY2ODg5LCJleHAiOjE2MDgzNjc3ODl9.aALZ6W__RX-sCB8_9Yz8lZdTo_pGqAPTRgJ6q79ZkrI
 
 ###
 
 POST {{host}}/api/listings/create
 content-type: application/json
+Authorization: {{token}}
 
 {
-    "name": "Petras Petrauskas",
     "title": "Informatikos koorepetitorius Vilniuje",
     "description": "1-12 klases mokiniams",
     "city": "Vilnius",
     "category": "Informatika"
 }
+
+###
+
+GET {{host}}/api/listings
+content-type: application/json
+Authorization: {{token}}
 
 ###
 
@@ -90,7 +96,7 @@ content-type: application/json
 
 {
     "email": "doomar999@gmail.com",
-    "password": "slaptazodis"
+    "password": "zodis1234"
 }
 
 ###

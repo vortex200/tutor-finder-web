@@ -26,7 +26,7 @@ function NavBar() {
   const userLink = () => {
     return (
       <DropdownButton id="dropdown-basic-button" title={user.name}>
-        <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+        {/* <Dropdown.Item href="/profile">Profile</Dropdown.Item> */}
         <Dropdown.Item href="/" onClick={handleLogout}>
           Logout
         </Dropdown.Item>

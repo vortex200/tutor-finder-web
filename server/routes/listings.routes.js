@@ -1,34 +1,11 @@
-// const express = require("express");
-// const router = express.Router();
+const express = require("express");
+const router = express.Router();
+const listingCtrl = require("../controllers/listingController");
+const auth = require("../middleware/auth");
 
-// router.get("/", async (req, res) => {
-//   // return all listings
+router.get("/", listingCtrl.getAllListings);
 
-//   try {
-//     const allListings = await pool.query("SELECT * FROM listings");
-//     return res.json(allListings.rows);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
-// router.post("/create", async (req, res) => {
-//   // create new listing
-
-//   try {
-//     const { name, title, description, city, category } = req.body;
-//     console.log(req.body);
-
-//     await pool.query(
-//       "INSERT INTO listings (name, title, description, city, category) VALUES($1, $2, $3, $4, $5)",
-//       [name, title, description, city, category]
-//     );
-
-//     return res.status(200);
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// });
+router.post("/create", auth, listingCtrl.createListing);
 
 // router.put("/update", async (req, res) => {
 //   // update existing listing
@@ -62,4 +39,4 @@
 //   }
 // });
 
-// module.exports = router;
+module.exports = router;

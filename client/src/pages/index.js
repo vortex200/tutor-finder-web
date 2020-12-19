@@ -1,45 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
 import Container from "react-bootstrap/Container";
-import Jumbotron from "react-bootstrap/Jumbotron";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import ListGroup from "react-bootstrap/ListGroup";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 
-import CategoriesArray from "Utils/CategoriesArray.example.js";
-
-function Category(props) {
+function Listing(props) {
   return (
-    <ListGroup.Item>
-      <a href="/listings">{props.name}</a>
-    </ListGroup.Item>
+    <tr>
+      <td>{props.data.title}</td>
+      <td>{props.data.description}</td>
+      <td>{props.data.city}</td>
+      <td>{props.data.category}</td>
+      <td>More information</td>
+    </tr>
   );
 }
 
-function CategoryList(names) {
-  return names.map((name, index) => {
-    return <Category name={name} key={index} />;
-  });
-}
-
 function Landing() {
-  const names = CategoriesArray;
+  const auth = useSelector((state) => state.auth);
+
+  const { isLogged } = auth;
+
+  const [listings, setListings] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/api/listings")
+      .then(function (response) {
+        setListings(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+  function ListingList(listingArr) {
+    return listingArr.map((listing, index) => {
+      return <Listing data={listing} key={index} />;
+    });
+  }
 
   return (
     <Container>
-      <Jumbotron>
-        <Row>
-          <Col className="choiceOne">Ieškau korepetitoriaus</Col>
-          <Col>Esu korepetitorius</Col>
-        </Row>
-      </Jumbotron>
-      <Container>
-        <h1>Kategorijos:</h1>
-        <Row>
-          <Col className="choiceOne">
-            <ListGroup>{CategoryList(names)}</ListGroup>
-          </Col>
-        </Row>
-      </Container>
+      {isLogged && (
+        <Button variant="outline-primary" href="/new-listing">
+          Naujas skelbimas
+        </Button>
+      )}
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>City</th>
+            <th>Category</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>{ListingList(listings)}</tbody>
+      </Table>
     </Container>
   );
 }

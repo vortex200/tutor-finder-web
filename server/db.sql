@@ -1,8 +1,8 @@
 CREATE TABLE listings (
     id SERIAL NOT NULL PRIMARY KEY,
-    tutor_id VARCHAR(50) NOT NULL,
+    user_id VARCHAR(50) NOT NULL,
     title VARCHAR(150) NOT NULL,
-    description VARCHAR(200) NOT NULL,
+    description VARCHAR(500) NOT NULL,
     city VARCHAR(20) NOT NULL,
     category VARCHAR(20) NOT NULL
 );

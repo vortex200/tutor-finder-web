@@ -1,4 +1,5 @@
 @host=http://localhost:5000
+@activation_token=
 @token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA4Mzc1MDc3LCJleHAiOjE2MDgzNzU5Nzd9.vGoIYQ3c45qO7Q7Bk8fUruNDudvq4I0WG84EKfyfgdg
 
 ###
@@ -34,37 +35,12 @@ Authorization: {{token}}
 
 ###
 
-PUT {{host}}/api/listings/update
-content-type: application/json
-
-{
-    "id": "2",
-    "name": "Petras Petrauskas",
-    "title": "Informatikos koorepetitorius Vilniuje",
-    "description": "1-12 klases mokiniams",
-    "city": "Kaunas",
-    "category": "Informatika"
-}
-
-###
-
 POST {{host}}/api/user/register
 content-type: application/json
 
 {
     "name": "Vardas Pavarde",
     "email": "email@eshop.gg",
-    "password": "slaptazodis"
-}
-
-###
-
-POST {{host}}/api/user/register
-content-type: application/json
-
-{
-    "name": "Petras Petrauskas",
-    "email": "email@gmail.com",
     "password": "slaptazodis"
 }
 
@@ -85,7 +61,7 @@ POST {{host}}/api/user/activation
 content-type: application/json
 
 {
-    "activation_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0cmFzIFBldHJhdXNrYXMiLCJlbWFpbCI6ImRvb21hcjk5OUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMiRYQVhTTk9ES2JVd1lZSThKbU5PSVBlMmdZejhuSnBMeXdxd2ljOG1Zc2tvMUV6SFYzODVacSIsImlhdCI6MTYwNzg2Mjg0MSwiZXhwIjoxNjA3ODYzMTQxfQ.XKEnMizndN9LjTXQGUPcxhwx1cgJKl9VD0CPu93_wYA"
+    "activation_token": {{activation_token}}
 }
 
 ###
@@ -132,21 +108,3 @@ Authorization: {{token}}
 ###
 
 GET {{host}}/api/user/logout
-
-###
-
-POST {{host}}/api/tutor/register
-content-type: application/json
-Authorization: {{token}}
-
-{
-    "email": "tutor@tutor.com",
-    "phone": "869076239", 
-    "description": "Puikus koorepetitorius"
-}
-
-###
-
-GET {{host}}/api/tutor/info 
-content-type: application/json
-Authorization: {{token}}

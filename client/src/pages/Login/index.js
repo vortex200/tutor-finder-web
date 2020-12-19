@@ -134,7 +134,9 @@ function Login() {
             </div>
           </Form>
 
-          <div className="divider-text">Or Login With</div>
+          <div className="divider-text">
+            <h5>Or Login With</h5>
+          </div>
 
           <div className="social">
             <GoogleLogin

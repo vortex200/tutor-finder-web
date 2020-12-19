@@ -25,8 +25,8 @@ CREATE TABLE tutors (
 );
 
 -- test data;
-INSERT INTO listings(name, title, description, city, category)
-VALUES ('Petras K.', 'Matematikos mokytojas', 'Geras korepetitorius','Alytus', 'Matematika'); 
+INSERT INTO listings(user_id, title, description, city, category)
+VALUES (1, 'Matematikos mokytojas', 'Geras korepetitorius','Alytus', 'Matematika'); 
 
 INSERT INTO users(name, email, password)
 VALUES ('Petras Petraitis', 'email@gmail.com', 'slaptazodis'); 

@@ -11,6 +11,16 @@ const listingCtrl = {
     }
   },
 
+  getListingById: async (req, res) => {
+    try {
+      const listings = await listingQuery.getFullListing(req.params.id);
+
+      res.json(listings);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
   createListing: async (req, res) => {
     try {
       const user_id = req.user.id;

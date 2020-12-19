@@ -4,7 +4,7 @@ const listingCtrl = require("../controllers/listingController");
 const auth = require("../middleware/auth");
 
 router.get("/", listingCtrl.getAllListings);
-
+router.get("/:id", listingCtrl.getListingById);
 router.post("/create", auth, listingCtrl.createListing);
 
 // router.put("/update", async (req, res) => {

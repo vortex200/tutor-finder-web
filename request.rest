@@ -17,12 +17,10 @@ Authorization: {{token}}
 ###
 
 GET {{host}}/api/listings
-content-type: application/json
-Authorization: {{token}}
 
 ###
 
-GET {{host}}/api/listings/
+GET {{host}}/api/listings/1
 
 ###
 

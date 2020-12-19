@@ -1,56 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import Container from "react-bootstrap/Container";
-import CardDeck from "react-bootstrap/CardDeck";
-import Card from "react-bootstrap/Card";
-
-import image from "../../../assets/img/person.png";
+import Table from "react-bootstrap/Table";
 
 function Listing() {
+  const { id } = useParams();
+
+  const [listing, setListing] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get("/api/listings/" + id)
+      .then(function (response) {
+        setListing(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <Container>
-      <CardDeck>
-        <Card>
-          <Card.Img variant="top" src={image} />
-          <Card.Body>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
-        </Card>
-        <Card>
-          <Card.Img variant="top" src={image} />
-          <Card.Body>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This card has supporting text below as a natural lead-in to
-              additional content.{" "}
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
-        </Card>
-        <Card>
-          <Card.Img variant="top" src={image} />
-          <Card.Body>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This card has even longer content
-              than the first to show that equal height action.
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
-        </Card>
-      </CardDeck>
+      {listing && (
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Title</td>
+              <td>{listing.listing.title}</td>
+            </tr>
+            <tr>
+              <td>Descriptiom</td>
+              <td>{listing.listing.description}</td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td>{listing.listing.city}</td>
+            </tr>
+            <tr>
+              <td>Category</td>
+              <td>{listing.listing.category}</td>
+            </tr>
+            <tr>
+              <td>Name</td>
+              <td>{listing.user.name}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>{listing.user.email}</td>
+            </tr>
+            <tr>
+              <td>Avatar</td>
+              <td>{listing.user.avatar}</td>
+            </tr>
+          </tbody>
+        </Table>
+      )}
     </Container>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
@@ -12,7 +13,9 @@ function Listing(props) {
       <td>{props.data.description}</td>
       <td>{props.data.city}</td>
       <td>{props.data.category}</td>
-      <td>More information</td>
+      <td>
+        <Link to={"/listings/" + props.data.id}>More information</Link>
+      </td>
     </tr>
   );
 }
@@ -44,7 +47,7 @@ function Landing() {
   return (
     <Container>
       {isLogged && (
-        <Button variant="outline-primary" href="/new-listing">
+        <Button variant="outline-primary" href="/new_listing">
           Naujas skelbimas
         </Button>
       )}

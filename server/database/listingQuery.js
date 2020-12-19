@@ -42,6 +42,26 @@ const listingQuery = {
       return err;
     }
   },
+
+  getListingById: async (listing_id) => {
+    try {
+      const listing = await pool.query("SELECT * from listings WHERE id=$1", [
+        listing_id,
+      ]);
+      return listing.rows[0];
+    } catch (err) {
+      return err;
+    }
+  },
+
+  deleteListing: async (id) => {
+    try {
+      await pool.query("DELETE FROM listings WHERE id=$1", [id]);
+      return;
+    } catch (err) {
+      return err;
+    }
+  },
 };
 
 module.exports = listingQuery;

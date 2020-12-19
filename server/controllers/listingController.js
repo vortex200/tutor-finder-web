@@ -44,6 +44,26 @@ const listingCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
+  deleteListing: async (req, res) => {
+    try {
+      const user_id = req.user.id;
+      const { id } = req.params;
+
+      const listing = await listingQuery.getListingById(id);
+
+      if (listing.user_id != user_id)
+        return res.status(400).json({ msg: "You can't delete this listing." });
+
+      await listingQuery.deleteListing(id);
+
+      res.json({
+        msg: "Listing successfully deleted!",
+      });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 module.exports = listingCtrl;

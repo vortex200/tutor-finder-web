@@ -9,6 +9,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Config from "Utils/Config";
+import { showErrMsg, showSuccessMsg } from "Components/Notification";
 import "./index.scss";
 
 const initialState = {
@@ -96,8 +97,8 @@ function Login() {
   return (
     <div className="login_page">
       <h2 id="pageTitle">Login</h2>
-      {err && <div>Error: {err}</div>}
-      {success && <div>Success: {success}</div>}
+      {err && showErrMsg(err)}
+      {success && showSuccessMsg(success)}
 
       <Container>
         <div className="formBox">

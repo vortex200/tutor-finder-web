@@ -6,24 +6,11 @@ import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
-function Listing(props) {
-  return (
-    <tr>
-      <td>{props.data.title}</td>
-      <td>{props.data.description}</td>
-      <td>{props.data.city}</td>
-      <td>{props.data.category}</td>
-      <td>
-        <Link to={"/listings/" + props.data.id}>More information</Link>
-      </td>
-    </tr>
-  );
-}
-
 function Landing() {
   const auth = useSelector((state) => state.auth);
+  const token = useSelector((state) => state.token);
 
-  const { isLogged } = auth;
+  const { user, isLogged } = auth;
 
   const [listings, setListings] = useState([]);
 
@@ -38,9 +25,51 @@ function Landing() {
       });
   }, []);
 
+  function deleteListing(id) {
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    axios
+      .delete("/api/listings/delete/" + id, config)
+      .then(function () {
+        window.location.reload();
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+
+  function Listing(props) {
+    return (
+      <tr>
+        <td>{props.data.title}</td>
+        <td>{props.data.description}</td>
+        <td>{props.data.city}</td>
+        <td>{props.data.category}</td>
+        <td>
+          <Link to={"/listings/" + props.data.id}>More information</Link>
+          {props.user_id == props.data.user_id && (
+            <Button
+              variant="danger"
+              onClick={(e) => {
+                e.preventDefault();
+                deleteListing(props.data.id);
+              }}
+            >
+              Delete
+            </Button>
+          )}
+        </td>
+      </tr>
+    );
+  }
+
   function ListingList(listingArr) {
     return listingArr.map((listing, index) => {
-      return <Listing data={listing} key={index} />;
+      return <Listing data={listing} user_id={user.id} key={index} />;
     });
   }
 

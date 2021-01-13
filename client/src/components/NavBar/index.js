@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import http from "Utils/http-common";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -15,7 +15,7 @@ function NavBar() {
 
   const handleLogout = async () => {
     try {
-      await axios.get("/api/user/logout");
+      await http.get("/user/logout");
       localStorage.removeItem("firstLogin");
       window.location.href = "/";
     } catch (err) {

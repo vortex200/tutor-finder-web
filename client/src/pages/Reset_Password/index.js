@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom"; /* eslint-disable-line */
-import axios from "axios";
+import http from "Utils/http-common";
 import { showErrMsg, showSuccessMsg } from "Components/Notification";
 import { isLength, isMatch } from "Utils/Validation";
 import Container from "react-bootstrap/Container";
@@ -38,8 +38,8 @@ function ResetPassword() {
       return setData({ ...data, err: "Password did not match.", success: "" });
 
     try {
-      const res = await axios.post(
-        "/api/user/reset",
+      const res = await http.post(
+        "/user/reset",
         { password },
         {
           headers: { Authorization: token },

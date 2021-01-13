@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
+import http from "Utils/http-common";
 import { dispatchLogin } from "Redux/actions/authAction";
 import { useDispatch } from "react-redux";
 import { GoogleLogin } from "react-google-login";
@@ -34,7 +34,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(Config.BACKEND_URL + "/api/user/login", {
+      const res = await http.post("/user/login", {
         email,
         password,
       });
@@ -53,12 +53,9 @@ function Login() {
   const responseGoogle = async (response) => {
     console.log(response);
     try {
-      const res = await axios.post(
-        Config.BACKEND_URL + "/api/user/google_login",
-        {
-          tokenId: response.tokenId,
-        }
-      );
+      const res = await http.post("/user/google_login", {
+        tokenId: response.tokenId,
+      });
 
       setUser({ ...user, error: "", success: res.data.msg });
       localStorage.setItem("firstLogin", true);
@@ -75,13 +72,10 @@ function Login() {
     console.log(response);
     try {
       const { accessToken, userID } = response;
-      const res = await axios.post(
-        Config.BACKEND_URL + "/api/user/facebook_login",
-        {
-          accessToken,
-          userID,
-        }
-      );
+      const res = await http.post("/user/facebook_login", {
+        accessToken,
+        userID,
+      });
 
       setUser({ ...user, error: "", success: res.data.msg });
       localStorage.setItem("firstLogin", true);

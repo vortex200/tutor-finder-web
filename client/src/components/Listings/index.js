@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import http from "Utils/http-common";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 
@@ -10,8 +10,8 @@ function Listing() {
   const [listing, setListing] = useState(false);
 
   useEffect(() => {
-    axios
-      .get("/api/listings/" + id)
+    http
+      .get("/listings/" + id)
       .then(function (response) {
         setListing(response.data);
       })

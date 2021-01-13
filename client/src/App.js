@@ -6,8 +6,7 @@ import {
   fetchUser,
   dispatchGetUser,
 } from "./redux/actions/authAction";
-import axios from "axios";
-import Config from "Utils/Config";
+import http from "Utils/http-common";
 
 import NavBar from "./components/NavBar";
 import NotFound from "./components/NotFound";
@@ -32,10 +31,7 @@ export default function App() {
     const firstLogin = localStorage.getItem("firstLogin");
     if (firstLogin) {
       const getToken = async () => {
-        const res = await axios.post(
-          Config.BACKEND_URL + "/api/user/refresh_token",
-          null
-        );
+        const res = await http.post("/user/refresh_token", null);
         dispatch({ type: "GET_TOKEN", payload: res.data.access_token });
       };
       getToken();

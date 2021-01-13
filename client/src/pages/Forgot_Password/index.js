@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import http from "Utils/http-common";
 import { showErrMsg, showSuccessMsg } from "Components/Notification";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -26,7 +26,7 @@ function Forgot_Password() {
   const forgotPassword = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/user/forgot", { email });
+      const res = await http.post("/user/forgot", { email });
 
       return setData({ ...data, err: "", success: res.data.msg });
     } catch (err) {

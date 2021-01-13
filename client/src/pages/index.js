@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import http from "Utils/http-common";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
@@ -15,8 +15,8 @@ function Landing() {
   const [listings, setListings] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/api/listings")
+    http
+      .get("/listings")
       .then(function (response) {
         setListings(response.data);
       })
@@ -32,8 +32,8 @@ function Landing() {
       },
     };
 
-    axios
-      .delete("/api/listings/delete/" + id, config)
+    http
+      .delete("/listings/delete/" + id, config)
       .then(function () {
         window.location.reload();
       })

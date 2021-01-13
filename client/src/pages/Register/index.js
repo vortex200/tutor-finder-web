@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
+import http from "Utils/http-common";
 import { showErrMsg, showSuccessMsg } from "Components/Notification";
-import Config from "Utils/Config";
 
 import "./index.scss";
 
@@ -20,8 +19,8 @@ export default function Register() {
   function submit(e) {
     e.preventDefault();
     console.log(email, password, fistName, lastName);
-    axios
-      .post(Config.BACKEND_URL + "/api/user/register", {
+    http
+      .post("/user/register", {
         email,
         password,
         name: fistName + " " + lastName,

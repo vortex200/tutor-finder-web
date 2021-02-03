@@ -1,11 +1,10 @@
-/* eslint-disable no-undef */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: path.resolve("src", "index.js"),
   output: {
-    path: path.resolve(__dirname, "..", "build"),
+    path: path.resolve(__dirname, "..", "build", "server"),
     filename: "bundle.js",
     publicPath: "/",
   },

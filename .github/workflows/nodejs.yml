@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: cd server
-      - run: npm i
-      - run: npm run install:client
-      - run: npm run test:client
-      - run: npm run build:client --if-present
+      - run: npm i --prefix server
+      - run: npm run install:client --prefix server
+      - run: npm run test:client --prefix server
+      - run: npm run build:client --if-present --prefix server

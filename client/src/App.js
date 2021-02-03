@@ -15,7 +15,6 @@ import Listing from "./components/Listings";
 import Landing from "./pages";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Activate from "./pages/Activate";
 import Profile from "./pages/Profile";
 import Forgot_Password from "./pages/Forgot_Password";
 import Reset_Password from "./pages/Reset_Password";
@@ -57,7 +56,6 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/activate" component={Activate} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/listings/:id" component={Listing} />
           <Route exact path="/profile" component={Profile} />

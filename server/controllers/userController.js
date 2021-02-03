@@ -42,7 +42,7 @@ const userCtrl = {
 
       const activation_token = createActivationToken(newUser);
 
-      const url = `${process.env.CLIENT_URL}/activate?token=${activation_token}`;
+      const url = `${process.env.DOMAIN}/api/user/activation?token=${activation_token}`;
       sendMail(email, url, "Verify your email address");
 
       res.json({
@@ -54,7 +54,7 @@ const userCtrl = {
   },
   activateEmail: async (req, res) => {
     try {
-      const { activation_token } = req.body;
+      const activation_token = req.query.token;
       const user = jwt.verify(
         activation_token,
         process.env.ACTIVATION_TOKEN_SECRET

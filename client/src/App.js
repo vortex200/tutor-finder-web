@@ -17,7 +17,6 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Activate from "./pages/Activate";
 import Profile from "./pages/Profile";
-// import BecomeTutor from "./pages/BecomeTutor";
 import Forgot_Password from "./pages/Forgot_Password";
 import Reset_Password from "./pages/Reset_Password";
 import New_Listing from "./pages/New_Listing";
@@ -65,7 +64,6 @@ export default function App() {
           <Route exact path="/forgot_password" component={Forgot_Password} />
           <Route exact path="/reset_password" component={Reset_Password} />
           <Route exact path="/new_listing" component={New_Listing} />
-          {/* <Route exact path="/becometutor" component={BecomeTutor} /> */}
           <Route component={NotFound} />
         </Switch>
       </div>

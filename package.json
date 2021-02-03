@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production node server.js",
     "startDev": "node server.js",
     "start:client": "npm run start --prefix client",
-    "build": "npm run build --prefix client"
+    "build": "npm i --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
@@ -28,5 +28,8 @@
   "devDependencies": {
     "concurrently": "^5.3.0",
     "eslint": "^7.12.1"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }

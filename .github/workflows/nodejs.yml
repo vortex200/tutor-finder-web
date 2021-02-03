@@ -26,4 +26,4 @@ jobs:
       - run: npm i
       - run: npm i --prefix client
       - run: npm run test --prefix client
-      - run: npm run build --if-present --prefix client
+      - run: npm run build --prefix client --if-present

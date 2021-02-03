@@ -6,8 +6,10 @@
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "startDev": "node server.js",
-    "build": "npm run build --prefix ../client",
-    "test": "npm run test --prefix ../client"
+    "start:client": "npm run start --prefix ../client",
+    "build:client": "npm run build --prefix ../client",
+    "test:client": "npm run test --prefix ../client",
+    "install:client": "npm i --prefix ../client"
   },
   "keywords": [],
   "author": "",

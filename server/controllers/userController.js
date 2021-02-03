@@ -162,17 +162,17 @@ const userCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  updateUser: async (req, res) => {
-    try {
-      const { name, avatar } = req.body;
-      // Mistake
-      await userQuery.updateUserById(name, avatar);
+  // updateUser: async (req, res) => {
+  //   try {
+  //     const { name, avatar } = req.body;
+  //     // Mistake
+  //     await userQuery.updateUserById(name, avatar);
 
-      res.json({ msg: "Update Success!" });
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },
+  //     res.json({ msg: "Update Success!" });
+  //   } catch (err) {
+  //     return res.status(500).json({ msg: err.message });
+  //   }
+  // },
 
   googleLogin: async (req, res) => {
     try {

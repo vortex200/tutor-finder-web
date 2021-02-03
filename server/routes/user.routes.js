@@ -18,7 +18,7 @@ router.get("/infor", auth, userCtrl.getUserInfor);
 
 router.get("/logout", userCtrl.logout);
 
-router.patch("/update", auth, userCtrl.updateUser);
+// router.patch("/update", auth, userCtrl.updateUser);
 
 // // Social Login
 router.post("/google_login", userCtrl.googleLogin);

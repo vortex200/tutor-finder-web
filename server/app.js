@@ -9,7 +9,6 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
-app.use("/api/listings", require("./routes/listings.routes.js"));
 app.use("/api/user", require("./routes/user.routes.js"));
 
 if (process.env.NODE_ENV === "production") {

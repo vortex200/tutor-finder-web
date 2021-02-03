@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./client/src/index.js",
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "server", "build"),
+    path: path.resolve(__dirname, "..", "server", "build"),
     filename: "bundle.js",
     publicPath: "/",
   },
@@ -40,9 +41,9 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
-      Components: path.resolve(__dirname, "client", "src", "components"),
-      Redux: path.resolve(__dirname, "client", "src", "redux"),
-      Utils: path.resolve(__dirname, "client", "src", "utils"),
+      Components: path.resolve(__dirname, "src", "components"),
+      Redux: path.resolve(__dirname, "src", "redux"),
+      Utils: path.resolve(__dirname, "src", "utils"),
     },
   },
   devServer: {
@@ -54,7 +55,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "client/public/index.html",
+      template: "public/index.html",
     }),
   ],
 };

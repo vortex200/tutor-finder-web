@@ -1,7 +1,0 @@
-/node_modules
-*/node_modules
-/server/build
-
-.DS_Store
-server/.env
-todo.txt

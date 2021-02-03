@@ -1,1 +1,4 @@
+/client/.eslintrc.js
+/client/webpack.config.js
+
 /server/build

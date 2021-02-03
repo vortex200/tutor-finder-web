@@ -10,7 +10,6 @@ import http from "Utils/http-common";
 
 import NavBar from "./components/NavBar";
 import NotFound from "./components/NotFound";
-import Listing from "./components/Listings";
 
 import Landing from "./pages";
 import Register from "./pages/Register";
@@ -18,7 +17,6 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Forgot_Password from "./pages/Forgot_Password";
 import Reset_Password from "./pages/Reset_Password";
-import New_Listing from "./pages/New_Listing";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -57,11 +55,9 @@ export default function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/listings/:id" component={Listing} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/forgot_password" component={Forgot_Password} />
           <Route exact path="/reset_password" component={Reset_Password} />
-          <Route exact path="/new_listing" component={New_Listing} />
           <Route component={NotFound} />
         </Switch>
       </div>

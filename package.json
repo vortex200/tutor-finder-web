@@ -7,7 +7,10 @@
     "start": "node server/server.js",
     "startDev": "NODE_ENV=production node server/server.js",
     "start:client": "npm run start --prefix client",
-    "build": "npm i --prefix client && npm run build --prefix client"
+    "build": "npm run build --prefix client",
+    "client-install": "npm install --prefix client",
+    "server-install": "npm install",
+    "install": "concurrently \"npm run server-install\" \"npm run client-install\""
   },
   "keywords": [],
   "author": "",

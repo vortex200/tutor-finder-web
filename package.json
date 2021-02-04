@@ -11,7 +11,7 @@
     "heroku-prebuild": "npm install --prefix client",
     "client-install": "npm install --prefix client",
     "server-install": "npm install",
-    "install-all": "concurrently \"npm run server-install\" \"npm run client-install\""
+    "install-all": "npm install && npm install --prefix client"
   },
   "keywords": [],
   "author": "",

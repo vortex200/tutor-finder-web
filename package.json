@@ -8,9 +8,10 @@
     "startDev": "NODE_ENV=production node server/server.js",
     "start:client": "npm run start --prefix client",
     "build": "npm run build --prefix client",
+    "preinstall": "npm install --prefix client",
     "client-install": "npm install --prefix client",
     "server-install": "npm install",
-    "install": "concurrently \"npm run server-install\" \"npm run client-install\""
+    "install-all": "concurrently \"npm run server-install\" \"npm run client-install\""
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "googleapis": "^66.0.0",
+    "install-all": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.1",
     "nodemailer": "^6.4.16",

@@ -8,7 +8,7 @@
     "startDev": "NODE_ENV=production node server/server.js",
     "start:client": "npm run start --prefix client",
     "build": "npm run build --prefix client",
-    "heroku-prebuild": "npm install --prefix client",
+    "heroku-prebuild": "npm install --prefix client && npm install --dev --prefix client",
     "client-install": "npm install --prefix client",
     "server-install": "npm install",
     "install-all": "npm install && npm install --prefix client"

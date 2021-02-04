@@ -23,6 +23,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm i
-      - run: npm build --if-present
+      - run: npm run install-all
       - run: npm run test --prefix client
+      - run: npm run build --if-present
